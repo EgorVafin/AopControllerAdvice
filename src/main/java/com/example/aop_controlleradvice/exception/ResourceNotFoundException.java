@@ -1,6 +1,6 @@
 package com.example.aop_controlleradvice.exception;
 
-public class ResourceNotFoundException extends Exception{
+public class ResourceNotFoundException extends RuntimeException{
 
     public ResourceNotFoundException() {
         super();
