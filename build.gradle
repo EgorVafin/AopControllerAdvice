@@ -20,10 +20,10 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '3.2.3'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
 
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+    compileOnly group: 'org.projectlombok', name: 'lombok'
 }
 
 tasks.named('test') {

@@ -5,11 +5,37 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
+
 public class ExceptionResponse {
 
     private int status;
     private String message;
     private List<String> details;
+
+    public ExceptionResponse() {
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public List<String> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<String> details) {
+        this.details = details;
+    }
 }
