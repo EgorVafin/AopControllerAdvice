@@ -4,13 +4,16 @@ import com.example.aop_controlleradvice.exception.ResourceNotFoundException;
 import com.example.aop_controlleradvice.exception.ResourceProcessingException;
 import com.example.aop_controlleradvice.model.Employee;
 import com.example.aop_controlleradvice.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +24,6 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    //Happy path, an employee is returned as response
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public Employee getEmployee() throws ResourceNotFoundException, ResourceProcessingException {
         try {
@@ -36,7 +38,6 @@ public class EmployeeController {
         }
     }
 
-//    no employee found so ResourceNotFoundException is thrown
     @RequestMapping(value = "/employee2", method = RequestMethod.GET)
     public Employee getEmployee2() throws ResourceNotFoundException, ResourceProcessingException {
         try {
@@ -51,7 +52,6 @@ public class EmployeeController {
         }
     }
 
-    //Some exception is thrown by service layer
     @RequestMapping(value = "/employee3", method = RequestMethod.GET)
     public Employee getEmployee3() throws ResourceNotFoundException, ResourceProcessingException {
         try {
@@ -64,6 +64,40 @@ public class EmployeeController {
             throw new ResourceProcessingException("Internal Server Exception while getting exception");
         }
     }
+
+//    @PostMapping("/order/create")
+//    public String create(@Valid @ModelAttribute(name = "order")
+//                         OrderCreateFormRequest orderCreateFormRequest,
+//                         BindingResult bindingResult,
+//                         Model model) {
+//
+//        if (bindingResult.hasErrors()) {
+//            List<Customer> customers = customerRepository.findAll();
+//            model.addAttribute("customers", customers);
+//
+//            model.addAttribute("order", orderCreateFormRequest);
+//            return "orders/order_create_form";
+//        }
+//
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        orderCreateFormRequest.setUser(user);
+//
+//        orderService.save(orderCreateFormRequest);
+//        return "redirect:/order";
+//    }
+
+
+// ---------------------------------------------
+//    @RestController
+//    public class UserController {
+//
+//        @PostMapping("/users")
+//        ResponseEntity<String> addUser(@Valid @RequestBody User user) {
+//            // persisting the user
+//            return ResponseEntity.ok("User is valid");
+//        }
+//
+//    }
 
 
 }
